@@ -1,0 +1,36 @@
+
+    <div class="container" th:fragment="defaultheader">
+      <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+        <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+          <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
+        </a>
+
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+          <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <li><a href="/user/" class="nav-link px-2 text-white">Пользователи</a></li>
+            <li><a href="/grazh/" class="nav-link px-2 text-white">Гражданства</a></li>
+            <li><a href="/res" class="nav-link px-2 text-white">Абитуриенты</a></li>
+            <li><a href="/news/" class="nav-link px-2 text-white">Дисциплины</a></li>
+            <li><a href="/users/" class="nav-link px-2 text-white">Факультеты</a></li>
+            <li><a href="/tovari/" class="nav-link px-2 text-white">Специальности</a></li>
+            <li><a href="/svazi/addpolzdan" class="nav-link px-2 text-white">Планы набора</a></li>
+            <li><a href="/okrandraioni/listokrugs" class="nav-link px-2 text-white">Районы и округа</a></li>
+            <li><a href="/users/add" class="nav-link px-2 text-white">Формы обучения</a></li>
+          </ul>
+        </div>
+
+        <div th:if="${#httpServletRequest.remoteUser == null}">
+          <div class="text-end">
+            <a href="/login"><button type="button" class="btn btn-outline-light me-2">Login</button></a>
+            <a href="/registration"><button type="button" class="btn btn-warning">Sign-up</button></a>
+          </div>
+        </div>
+        <div th:if="${#httpServletRequest.remoteUser != null}">
+          <div class="text-end">
+            <form th:action="@{/logout}" method="post">
+              <button type="submit" class="btn btn-outline-light me-2">Logout</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
