@@ -4,6 +4,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -17,11 +18,15 @@ public class Specialnosti {
 
     @Size(max = 40)
     @NotNull
+    @NotBlank
+    @Size(message = "Укажите минимум 3 символов, Максимум 40",min = 3,max=40)
     @Column(name = "kodpospo", nullable = false, length = 40)
     private String kodpospo;
 
     @Size(max = 100)
     @NotNull
+    @NotBlank
+    @Size(message = "Укажите минимум 3 символов, Максимум 150",min = 3,max=150)
     @Column(name = "namespecialnost", nullable = false, length = 100)
     private String namespecialnost;
 

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Добавление/Изменение специальности</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+<header class="p-3 text-bg-dark" th:insert="fragments/header :: defaultheader"></header>
+<body>
+<div th:if="${idid}==0">
+    <h1 style="text-align: center;">Добавление специальности</h1>
+    <form th:object="${users}" style="text-align: center; margin-top: 20px;" th:action="${'/specialnost/add'}" method="post">
+        <input style="width: 40%; margin-top: 20px;" type="text" placeholder="Код специальности" id="kodpospo" name="kodpospo"></input>
+        <div style="color: red;" th:if="${#fields.hasErrors('kodpospo')}" th:errors="*{kodpospo}"></div>
+        <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+        <div></div>
+        <input style="width: 40%; margin-top: 20px;" type="text" placeholder="Наименование специальности" id="namespecialnost" name="namespecialnost"></input>
+        <div style="color: red;" th:if="${#fields.hasErrors('namespecialnost')}" th:errors="*{namespecialnost}"></div>
+        <div th:if="${error1}" th:text="${error1}" style="color: red;"></div>
+        <div></div>
+        <select style="width: 40%; margin-top: 20px;" name="fakultetid">
+            <div th:each="ele : ${facultets}">
+                <option th:text="${ele.namefakultet}" th:value="${ele.id}"></option>
+            </div>
+        </select>
+        <div></div>
+        <input type="submit" style="margin-top: 10px;" value="Добавить специальность" class="mt-10 btn btn-success">
+        <a href="/specialnost/" style="margin-top: 10px;" class="btn btn-primary">Назад</a>
+    </form>
+</div>
+<div th:if="${idid}>0">
+    <div class="container" th:each="el : ${users}">
+        <h1 style="text-align: center;">Изменение специальности</h1>
+        <form th:object="${users2}" style="text-align: center; margin-top: 20px;" th:action="'/specialnost/edit/' + ${el.id}" method="post">
+            <label style="width: 230px;text-align: right;" for="kodpospo">Код специальности:</label>
+            <input style="width: 40%; margin-top: 20px;" type="text" th:value="${el.kodpospo}" placeholder="Код специальности" id="kodpospo" name="kodpospo"></input>
+            <div style="color: red;" th:if="${#fields.hasErrors('kodpospo')}" th:errors="*{kodpospo}"></div>
+            <div th:if="${error}" th:text="${error}" style="color: red;"></div>
+            <div></div>
+            <label style="width: 230px;text-align: right;" for="namespecialnost">Наименование специальности:</label>
+            <input style="width: 40%; margin-top: 20px;" type="text" th:value="${el.namespecialnost}" placeholder="Наименование" id="namespecialnost" name="namespecialnost"></input>
+            <div style="color: red;" th:if="${#fields.hasErrors('namespecialnost')}" th:errors="*{namespecialnost}"></div>
+            <div th:if="${error1}" th:text="${error1}" style="color: red;"></div>
+            <div></div>
+            <label style="width: 230px;text-align: right;" for="fakultetid">Факультет:</label>
+            <select style="width: 40%; margin-top: 20px;" id="fakultetid" name="fakultetid">
+                <div th:each="ele : ${facultets}">
+                    <option th:if="${el.getFakultetid().id}!=${ele.id}" th:text="${ele.namefakultet}" th:value="${ele.id}"></option>
+                    <option th:if="${el.getFakultetid().id}==${ele.id}" selected th:text="${ele.namefakultet}" th:value="${ele.id}"></option>
+                </div>
+            </select>
+            <div></div>
+            <input type="submit" style="margin-top: 10px;" value="Изменить специальность" class="mt-10 btn btn-success">
+            <a href="/specialnost/" style="margin-top: 10px;" class="btn btn-primary">Назад</a>
+        </form>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
+      xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+  <title>Список плана набора</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+</head>
+<header class="p-3 text-bg-dark" th:insert="fragments/header :: defaultheader"></header>
+<section>
+  <div style="width: 90%; margin: 0 auto;">
+    <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="get" action="/disciplins/search">
+      <div style="display: flex; margin-top: 30px; margin-bottom: 20px;">
+<!--        <input type="text" class="form-control form-control-dark text-bg-light" placeholder="Найти..." aria-label="Search" name="title" id="title">
+        <input type="submit" value="Найти" class="btn btn-primary">-->
+        <a style="width: 320px; margin-left: 20px;" href="/plans/0" class="btn btn-success">Добавить план набора</a>
+      </div>
+    </form>
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Специальность</th>
+        <th scope="col">Форма обучения</th>
+        <th scope="col">Планируемый набор</th>
+        <th scope="col">Управление</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="el : ${users}">
+        <th th:text="${el.id}" scope="row"></th>
+        <td th:text="${el.getSpecialnostid().kodpospo}+' '+${el.getSpecialnostid().namespecialnost}"></td>
+        <td th:text="${el.getFormsobucid().nameformobuch}"></td>
+        <td th:text="${el.kolvocheclovek}"></td>
+        <td><a th:href="'/plans/' + ${el.id}" class="btn btn-info">Изменить (просмотреть)</a><a style="margin-left: 20px;" th:href="'/plans/delete/' + ${el.id}" class="btn btn-danger">Удалить</a></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+</html>

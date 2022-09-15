@@ -1,6 +1,7 @@
 package com.example.LastProject.models;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -14,6 +15,8 @@ public class Fakulteti {
 
     @Size(max = 150)
     @NotNull
+    @NotBlank
+    @Size(message = "Укажите минимум 3 символов, Максимум 150",min = 3,max=150)
     @Column(name = "namefakultet", nullable = false, length = 150)
     private String namefakultet;
 

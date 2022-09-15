@@ -1,13 +1,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org"
       xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
 <head>
-    <title>Список пользователей системы</title>
+    <title>Список округов</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
 </head>
 <header class="p-3 text-bg-dark" th:insert="fragments/header :: defaultheader"></header>
 <section>
-    <a style="width: 280px; margin-left: 20px;" href="/okrandraioni/listraioni" class="btn btn-primary">Районы</a>
+    <a style="width: 280px; margin-left: 20px;" href="/okrandraioni/listoraioni" class="btn btn-primary">Районы</a>
     <div style="width: 90%; margin: 0 auto;">
         <form class="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" method="get" action="/okrandraioni/listokrugs/search">
             <div style="display: flex; margin-top: 30px; margin-bottom: 20px;">

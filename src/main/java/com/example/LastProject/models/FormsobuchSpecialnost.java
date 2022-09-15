@@ -15,12 +15,6 @@ public class FormsobuchSpecialnost {
     private Integer id;
 
     @NotNull
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
-    @JoinColumn(name = "specialnostid", nullable = false)
-    private Specialnosti specialnostid;
-
-    @NotNull
     @OneToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "abiturientid", nullable = false)
@@ -28,8 +22,8 @@ public class FormsobuchSpecialnost {
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
-    @JoinColumn(name = "formaobuchid", nullable = false)
-    private Formsobuch formaobuchid;
+    @JoinColumn(name = "plannaboraid", nullable = false)
+    private Plannabor plannaboraid;
 
     public Integer getId() {
         return id;
@@ -37,14 +31,6 @@ public class FormsobuchSpecialnost {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Specialnosti getSpecialnostid() {
-        return specialnostid;
-    }
-
-    public void setSpecialnostid(Specialnosti specialnostid) {
-        this.specialnostid = specialnostid;
     }
 
     public Abiturient getAbiturientid() {
@@ -55,12 +41,11 @@ public class FormsobuchSpecialnost {
         this.abiturientid = abiturientid;
     }
 
-    public Formsobuch getFormaobuchid() {
-        return formaobuchid;
+    public Plannabor getPlannaboraid() {
+        return plannaboraid;
     }
 
-    public void setFormaobuchid(Formsobuch formaobuchid) {
-        this.formaobuchid = formaobuchid;
+    public void setPlannaboraid(Plannabor plannaboraid) {
+        this.plannaboraid = plannaboraid;
     }
-
 }

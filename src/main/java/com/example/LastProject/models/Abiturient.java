@@ -32,7 +32,7 @@ public class Abiturient {
 
     @NotNull
     @Column(name = "snils", nullable = false)
-    private Integer snils;
+    private String snils;
 
     @NotNull
     @Column(name = "seriapasporta", nullable = false)
@@ -90,11 +90,11 @@ public class Abiturient {
         this.otchestvo = otchestvo;
     }
 
-    public Integer getSnils() {
+    public String getSnils() {
         return snils;
     }
 
-    public void setSnils(Integer snils) {
+    public void setSnils(String snils) {
         this.snils = snils;
     }
 
