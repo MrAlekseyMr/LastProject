@@ -10,14 +10,19 @@
     <div class="container-fluid h-custom">
         <h1 class="mt-4 text-center">Добро пожаловать, [[${#httpServletRequest.remoteUser}]], в систему "Приёмная комиссия"</h1>
         <h3 class="mt-5">Меню сайта:</h3>
-        <a><p class="ms-5">Пользователи системы</p></a>
-        <a><p class="ms-5">Абитуриенты</p></a>
-        <a><p class="ms-5">Дисциплины</p></a>
-        <a><p class="ms-5">Факультеты</p></a>
-        <a><p class="ms-5">Специальности</p></a>
-        <a><p class="ms-5">Планы набора</p></a>
-        <a><p class="ms-5">Районы и округа</p></a>
-        <a><p class="ms-5">Формы обучения</p></a>
+        <ul>
+            <!--<span sec:authentication="principal.authorities"></span>-->
+            <li><a href="/user/" class="nav-link px-2 text-black">Пользователи</a></li>
+            <li><a href="/grazh/" class="nav-link px-2 text-black">Гражданства</a></li>
+            <li><a href="/abiturients/" class="nav-link px-2 text-black">Абитуриенты</a></li>
+            <li><a href="/disciplins/" class="nav-link px-2 text-blackwhite">Дисциплины</a></li>
+            <li><a href="/facultets/" class="nav-link px-2 text-black">Факультеты</a></li>
+            <li><a href="/specialnost/" class="nav-link px-2 text-black">Специальности</a></li>
+            <li><a href="/plans/" class="nav-link px-2 text-black">Планы набора</a></li>
+            <li><a href="/okrandraioni/listokrugs" class="nav-link px-2 text-black">Районы и округа</a></li>
+            <li><a href="/formsobuch/" class="nav-link px-2 text-black">Формы обучения</a></li>
+            <li><a href="/abiturients/konkurs/" class="nav-link px-2 text-black">Конкурсные списки</a></li>
+        </ul>
     </div>
 </section>
 </html>

@@ -5,6 +5,7 @@ import com.example.LastProject.repositories.GrazhdanstavRepository;
 import com.example.LastProject.repositories.OkrugRepository;
 import com.example.LastProject.repositories.RaioniRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,6 +18,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/okrandraioni")
+@PreAuthorize("hasAnyAuthority('ADMIN')")
 public class OkrandraioniController {
     @Autowired
     private OkrugRepository okrugRepository;

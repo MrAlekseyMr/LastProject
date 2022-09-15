@@ -1,4 +1,4 @@
-
+<html xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
     <div class="container" th:fragment="defaultheader">
       <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
         <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
@@ -7,6 +7,7 @@
 
         <div th:if="${#httpServletRequest.remoteUser != null}">
           <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
+            <!--<span sec:authentication="principal.authorities"></span>-->
             <li><a href="/user/" class="nav-link px-2 text-white">Пользователи</a></li>
             <li><a href="/grazh/" class="nav-link px-2 text-white">Гражданства</a></li>
             <li><a href="/abiturients/" class="nav-link px-2 text-white">Абитуриенты</a></li>
@@ -16,6 +17,7 @@
             <li><a href="/plans/" class="nav-link px-2 text-white">Планы набора</a></li>
             <li><a href="/okrandraioni/listokrugs" class="nav-link px-2 text-white">Районы и округа</a></li>
             <li><a href="/formsobuch/" class="nav-link px-2 text-white">Формы обучения</a></li>
+            <li><a href="/abiturients/konkurs/" class="nav-link px-2 text-white">Конкурсные списки</a></li>
           </ul>
         </div>
 
@@ -34,3 +36,4 @@
         </div>
       </div>
     </div>
+</html>

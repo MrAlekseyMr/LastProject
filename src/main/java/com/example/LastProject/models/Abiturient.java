@@ -1,11 +1,12 @@
 package com.example.LastProject.models;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 import java.time.LocalDate;
 
 @Entity
@@ -16,13 +17,13 @@ public class Abiturient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Size(max = 100)
-    @NotNull
+    @NotBlank(message = "Error")
+    @Size(message = "Укажите минимум 3 символов, Максимум 100",min = 3,max=100)
     @Column(name = "familia", nullable = false, length = 100)
     private String familia;
 
-    @Size(max = 100)
-    @NotNull
+    @NotBlank(message = "Error")
+    @Size(message = "Укажите минимум 3 символов, Максимум 100",min = 3,max=100)
     @Column(name = "ima", nullable = false, length = 100)
     private String ima;
 
@@ -30,29 +31,35 @@ public class Abiturient {
     @Column(name = "otchestvo", length = 100)
     private String otchestvo;
 
-    @NotNull
+    @NotBlank(message = "Error")
+    @Size(min=14,max = 14,message = "Введите корректный СНИЛС")
     @Column(name = "snils", nullable = false)
     private String snils;
 
-    @NotNull
+    @NotNull(message = "Error")
+    @Size(min=4,max = 4,message = "Введите корректную серию паспорта")
     @Column(name = "seriapasporta", nullable = false)
-    private Integer seriapasporta;
+    private String seriapasporta;
 
-    @NotNull
+    @NotNull(message = "Заполните")
+    @Size(min=6,max = 6,message = "Введите корректный номер паспорта")
     @Column(name = "nomerpasporta", nullable = false)
-    private Integer nomerpasporta;
+    private String nomerpasporta;
 
-    @NotNull
+    @NotNull(message = "Заполните")
     @Column(name = "dateofbirth", nullable = false)
+    @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)
+    @JsonFormat(pattern = "yyyy-MM-dd")
+    @Past(message = "Укажите дату рождения корректную")
     private LocalDate dateofbirth;
 
-    @NotNull
+    @NotNull(message = "Заполните")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "raionid", nullable = false)
     private Raioni raionid;
 
-    @NotNull
+    @NotNull(message = "Заполните")
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     @JoinColumn(name = "grazhdanstvoid", nullable = false)
@@ -98,19 +105,19 @@ public class Abiturient {
         this.snils = snils;
     }
 
-    public Integer getSeriapasporta() {
+    public String getSeriapasporta() {
         return seriapasporta;
     }
 
-    public void setSeriapasporta(Integer seriapasporta) {
+    public void setSeriapasporta(String seriapasporta) {
         this.seriapasporta = seriapasporta;
     }
 
-    public Integer getNomerpasporta() {
+    public String getNomerpasporta() {
         return nomerpasporta;
     }
 
-    public void setNomerpasporta(Integer nomerpasporta) {
+    public void setNomerpasporta(String nomerpasporta) {
         this.nomerpasporta = nomerpasporta;
     }
 

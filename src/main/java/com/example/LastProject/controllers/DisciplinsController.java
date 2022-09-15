@@ -6,6 +6,7 @@ import com.example.LastProject.repositories.BasedisciplinRepository;
 import com.example.LastProject.repositories.FakultetiRepository;
 import com.fasterxml.jackson.databind.ser.Serializers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/disciplins")
+@PreAuthorize("hasAnyAuthority('ADMIN')")
 public class DisciplinsController {
     @Autowired
     private BasedisciplinRepository basedisciplinRepository;

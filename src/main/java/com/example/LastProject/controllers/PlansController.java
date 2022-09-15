@@ -6,6 +6,7 @@ import com.example.LastProject.repositories.FormsobuchRepository;
 import com.example.LastProject.repositories.PlannaborRepository;
 import com.example.LastProject.repositories.SpecialnostiRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -18,6 +19,7 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("/plans")
+@PreAuthorize("hasAnyAuthority('ADMIN') || hasAnyAuthority('SOTRUDNIKPK')")
 public class PlansController {
     @Autowired
     private PlannaborRepository plannaborRepository;
